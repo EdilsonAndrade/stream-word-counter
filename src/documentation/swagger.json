@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Word Count",
+      "description": "This is an application that count words from a given file",
+      "version": "1.0.0",
+      "contact": {
+          "name": "Edilson"
+      }
+  },
+  "components": {
+      "schemas": {
+          "WordRequest": {
+              "type": "object",
+              
+              "properties": {
+                  "quantityWord": {
+                      "type": "number",
+                      "example": 3
+                  },
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                }
+              }
+          },
+          "WordResponse": {
+            "type": "array",
+            "frequencies": {
+                "properties": {
+                    "word": {
+                        "type": "string",
+                        "example": "sed"
+                    },
+                    "count": {
+                        "type": "number",
+                        "example": 10
+                    }
+                }
+            }
+          }
+      }
+  },
+  "paths": {
+      "/api/v1/wordcount": {
+          "post": {
+              "requestBody": {
+                  "description": "Count workds within a file content",
+                  "required": true,
+                  "content": {
+                      "multipart/form-data": {
+                          "schema": {
+                              "$ref": "#/components/schemas/WordRequest"
+                          },
+                          "encoding":{
+                              "file":{
+                                "contentType": "text/plain"
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "An array of words with quantity found",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "$ref": "#/components/schemas/WordResponse"
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}

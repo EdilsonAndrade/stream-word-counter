@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+     "lib": [
+        "es5",
+        "es6"
+     ],
+     "target": "es5",
+     "module": "commonjs",
+     "moduleResolution": "node",
+     "rootDir": "./src/",
+     "outDir": "./dist",
+     "emitDecoratorMetadata": true,
+     "experimentalDecorators": true,
+     "sourceMap": true,
+     "esModuleInterop": true,
+     "baseUrl": "./src/", 
+     "strict": true,                           
+     "strictPropertyInitialization": false,                       
+     "paths": {
+       "@modules/*": ["modules/*"],
+       "@shared/*": ["shared/*"],
+       "@config/*": ["config/*"]
+      },
+      "skipLibCheck": true,                     
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true     
+  }
+}
